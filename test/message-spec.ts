@@ -12,4 +12,8 @@ describe("message", () => {
     const message = new Message();
     expect(message.has('test')).to.equal(false);
   });
+  it("should get empty command on empty message", () => {
+    const message = new Message();
+    expect(message.getCommand()).to.equal("");
+  })
 });

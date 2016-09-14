@@ -17,7 +17,7 @@ export interface IMessageCore {
 }
 
 export class Message {
-  private command: string;
+  private command: string = "";
   private params: any;
 
   constructor(data?: IMessageCore) {
