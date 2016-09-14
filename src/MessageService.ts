@@ -1,23 +1,23 @@
 import {ICommands} from "./icommands.interface";
-import {Message} from "./message";
+import {DdmqMessage} from "./lib/ddmq_message";
 import {Subject} from "@reactivex/rxjs";
 import {Observable} from "@reactivex/rxjs";
 
 export class MessageService {
 
-  protected messages: Subject<Message>;
+  protected messages: Subject<DdmqMessage>;
 
   constructor() {
-    this.messages = new Subject<Message>();
+    this.messages = new Subject<DdmqMessage>();
   }
 
-  public register(commands: ICommands): Observable<Message> {
-    return this.messages.filter(function (message: Message) {
+  public register(commands: ICommands): Observable<DdmqMessage> {
+    return this.messages.filter(function (message: DdmqMessage) {
       return message.getCommand() in commands;
     });
   }
 
-  public push(message: Message) {
+  public push(message: DdmqMessage) {
     this.messages.next(message);
   }
 }
