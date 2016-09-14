@@ -1,5 +1,5 @@
-import {Message} from "./Message";
 import {ICommands} from "./icommands.interface";
+import {Message} from "./message";
 import {Subject} from "@reactivex/rxjs";
 import {Observable} from "@reactivex/rxjs";
 
