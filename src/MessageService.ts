@@ -1,23 +1,23 @@
-import {Message} from './Message';
-import {Commands} from './Commands';
-import {Subject} from "@reactivex/rxjs/src/Subject";
-import {Observable} from '@reactivex/rxjs/src/Observable';
+import {Message} from "./Message";
+import {ICommands} from "./icommands.interface";
+import {Subject} from "@reactivex/rxjs";
+import {Observable} from "@reactivex/rxjs";
 
 export class MessageService {
 
-  protected messages:Subject<Message>;
+  protected messages: Subject<Message>;
 
   constructor() {
     this.messages = new Subject<Message>();
   }
 
-  register(commands:Commands):Observable<Message> {
-    return this.messages.filter(function (message:Message) {
-      return message.command in commands;
+  public register(commands: ICommands): Observable<Message> {
+    return this.messages.filter(function (message: Message) {
+      return message.getCommand() in commands;
     });
   }
 
-  push(message:Message) {
+  public push(message: Message) {
     this.messages.next(message);
   }
 }
