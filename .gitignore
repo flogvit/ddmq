@@ -4,3 +4,8 @@ typings/
 npm-debug.log
 .idea
 /lib/
+.nyc_output/
+test/*.js
+test/*.map
+src/**/*.js
+src/**/*.map
